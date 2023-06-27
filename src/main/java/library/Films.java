@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Films {
     private static Scanner in = new Scanner(System.in);
     public void registerFilms() throws FileNotFoundException {
-        PrintStream registe = new PrintStream("films");
+        PrintStream registe = new PrintStream("Films");
         String name, gender, duration, director, actors;
         double pontuation;
         System.out.print("Nome do filme: ");
@@ -44,6 +44,27 @@ public class Films {
                     case 5 -> System.out.printf("Pontuação : ");
                 }
                 System.out.println(printInfo[i]);
+            }
+        }
+    }
+    public void readOneFilm(String nameFilm) throws FileNotFoundException {
+        FileReader file = new FileReader("Users");
+        Scanner fl = new Scanner(file);
+        while (fl.hasNextLine()){
+            String line = fl.nextLine();
+            String[] printInfo = line.split(", ");
+            if(printInfo[0].startsWith(nameFilm)){
+                for (int i = 0; i < printInfo.length; i++) {
+                    switch (i){
+                        case 0 -> System.out.printf("Nome: ");
+                        case 1 -> System.out.printf("Genero: ");
+                        case 2 -> System.out.printf("Duração: ");
+                        case 3 -> System.out.printf("Diretor: ");
+                        case 4 -> System.out.printf("Atores: ");
+                        case 5 -> System.out.printf("Pontuação : ");
+                    }
+                    System.out.println(printInfo[i]);
+                }
             }
         }
     }
